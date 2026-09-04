@@ -22,9 +22,10 @@
 
 ## 檔案說明
 
-- `abn_projector.py` — 零空間投影器核心實現
-- `test_abn_final.py` — 完整驗證腳本（Transformer 語言建模）
-- `verdict_final.png` — 驗證結果可視化
+- **`ABN_Optimizer.py`**：核心實作。
+  - `LayerProjector`：管理歷史梯度、執行 SVD 並動態更新零空間投影矩陣。
+  - `ABNAdamW`：繼承自 `torch.optim.Optimizer`，在標準 AdamW 更新前插入零空間投影，實現「降熵優化」。
+- **`test_abn_final.py`**：完整驗證腳本。執行後會自動訓練對照組與實驗組，並輸出 `verdict_final.png`。
 
 ## 執行方式
 
